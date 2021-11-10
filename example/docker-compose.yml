@@ -17,6 +17,7 @@ services:
     volumes:
       - ./apisix_log:/usr/local/apisix/logs
       - ./apisix_conf/config.yaml:/usr/local/apisix/conf/config.yaml:ro
+      - ./apisix_plugin/go-runner:/usr/local/apisix/plugin/finecloud/go-runner
     depends_on:
       - etcd
     ##network_mode: host
@@ -81,7 +82,7 @@ services:
     image: grafana/grafana:7.3.7
     restart: always
     ports:
-      - "3000:3000"
+      - "13000:3000"
     volumes:
       - "./grafana_conf/provisioning:/etc/grafana/provisioning"
       - "./grafana_conf/dashboards:/var/lib/grafana/dashboards"
